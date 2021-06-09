@@ -1,5 +1,5 @@
 {
-  "socketURL": "https://rtcmulticonnection.herokuapp.com:443/",
+  "socketURL": "/",
   "dirPath": "",
   "homePage": "/demos/index.html",
   "socketMessageEvent": "RTCMultiConnection-Message",

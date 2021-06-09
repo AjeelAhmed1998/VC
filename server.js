@@ -9,8 +9,9 @@ var httpServer = require('http');
 const ioServer = require('socket.io');
 const RTCMultiConnectionServer = require('rtcmulticonnection-server');
 // const cors = require('cors')
-var PORT = 9001;
-var isUseHTTPs = true;
+// var PORT = 9001;
+var PORT = process.env.PORT || 9001
+var isUseHTTPs = false;
 
 const jsonPath = {
     config: 'config.json',
