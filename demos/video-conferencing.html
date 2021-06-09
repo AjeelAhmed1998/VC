@@ -7,94 +7,77 @@
   <link rel="shortcut icon" href="/demos/logo.png">
   <link rel="stylesheet" href="/demos/stylesheet.css">
   <script src="/demos/menu.js"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>   
 </head>
 <!-- <body onmouseover="sendSnap()"> -->
 <body>
+  <header>
+    <a class="logo" href="/"><img src="/demos/logo.png" alt="RTCMultiConnection"></a>
+    <a href="/" class="menu-explorer">Menu<img src="/demos/menu-icon.png" alt="Menu"></a>
+    <nav>
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li>
+        <a href="/demos/">Demos</a>
+      </li>
+      <li>
+        <a href="https://www.rtcmulticonnection.org/docs/getting-started/">Getting Started</a>
+      </li>
+      <li>
+        <a href="https://www.rtcmulticonnection.org/FAQ/">FAQ</a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/playlist?list=PLPRQUXAnRydKdyun-vjKPMrySoow2N4tl">YouTube</a>
+      </li>
+      <li>
+        <a href="https://github.com/muaz-khan/RTCMultiConnection/wiki">Wiki</a>
+      </li>
+      <li>
+        <a href="https://github.com/muaz-khan/RTCMultiConnection">Github</a>
+      </li>
+    </nav>
+  </header>
+
+  <h1>
+    Video Conferencing using RTCMultiConnection
+    <p class="no-mobile">
+      Multi-user (many-to-many) video chat using mesh networking model.
+    </p>
+  </h1>
 
   <section class="make-center">
-    <div onmouseover="startMeeting()" >
-
-      <div style="display: flex; background-color: #3aa5ab; margin-bottom: 10px; padding: 10px; justify-content: center;" >
-        <h1 style="color: white; font-weight: 900;">On going meeting</h1>
-      </div>
-
-
+    <div>
       <label><input type="checkbox" id="record-entire-conference"> Record Entire Conference In The Browser?</label>
       <span id="recording-status" style="display: none;"></span>
       <button id="btn-stop-recording" style="display: none;">Stop Recording</button>
       <br><br>
 
-      <input type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=20  >
+      <input type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=20>
 
 
- 
+      <p id="emotion">hello my emotion is </p>
 
 
 
-      <!-- <div id="open-room"></div>
-      <div id="join-room"></div> -->
       <button id="open-room">Open Room</button>
       <button id="join-room">Join Room</button>
-      <button id="open-or-join-room">Start Meeting</button>
+      <button id="open-or-join-room">Auto Open Or Join Room</button>
 
+      <button id="hangup">hang up</button>
+      <button id="mute"> mute</button>
+      <button id="getAllParticipants">get info of participants</button>
 
-     
-    
-    
-    <div id="snap"></div>
-    <div id="useridid"></div>
-    
-    <div id=""  >
-      <div id="videos-container" style="margin: 20px 0; " >
-        
-      </div>
-      <div  style="display: flex; justify-content: center;">
-        <button id="hangup">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone-off" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <line x1="3" y1="21" x2="21" y2="3" />
-            <path d="M5.831 14.161a15.946 15.946 0 0 1 -2.831 -8.161a2 2 0 0 1 2 -2h4l2 5l-2.5 1.5c.108 .22 .223 .435 .345 .645m1.751 2.277c.843 .84 1.822 1.544 2.904 2.078l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a15.963 15.963 0 0 1 -10.344 -4.657" />
-          </svg>
-        </button>
-        <button id="mute">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone-off" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <line x1="3" y1="3" x2="21" y2="21" />
-            <path d="M9 5a3 3 0 0 1 6 0v5a3 3 0 0 1 -.13 .874m-2 2a3 3 0 0 1 -3.87 -2.872v-1" />
-            <path d="M5 10a7 7 0 0 0 10.846 5.85m2.002 -2a6.967 6.967 0 0 0 1.152 -3.85" />
-            <line x1="8" y1="21" x2="16" y2="21" />
-            <line x1="12" y1="17" x2="12" y2="21" />
-          </svg>
-        </button>
-        <button id="getAllParticipants">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-           <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <circle cx="9" cy="7" r="4" />
-            <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
-          </svg>
-        </button>
-
-      </div>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+
     <canvas></canvas>
-    <!-- <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
- -->  </section>
+
+    <button id="snap">snap</button>
+    <button id="useridid">change username</button>
+
+    <div id="videos-container" style="margin: 20px 0;"></div>
+
+    <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
+  </section>
 
 <script src="/dist/RTCMultiConnection.min.js"></script>
 <script src="/node_modules/webrtc-adapter/out/adapter.js"></script>
@@ -109,11 +92,6 @@
 // ......................................................
 // .......................UI Code........................
 // ......................................................
-//const axios = require('axios')
-/* function startMeeting(){
-  document.getElementById("open-or-join-room").click() ;
-} */
-
 document.getElementById('open-room').onclick = function() {
     disableInputButtons();
     connection.open(document.getElementById('room-id').value, function(isRoomOpened, roomid, error) {
@@ -169,6 +147,7 @@ var connection = new RTCMultiConnection();
 
 // by default, socket.io server is assumed to be deployed on your own URL
 connection.socketURL = '/';
+// connection.socketURL = 'https://teachfinityvc.herokuapp.com/';
 
 // comment-out below line if you do not have your own socket.io server
 // connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
@@ -177,11 +156,11 @@ connection.socketMessageEvent = 'video-conference-demo';
 // connection.maxParticipantsAllowed = 1;
 
 
-// connection.extra = {
-//     fullName: 'Ajeel Ahmed',
-//     email: 'ajeelahmed1998@gmail.com',
-//     // photo: 'http://site.com/profile.png'
-// };
+connection.extra = {
+    fullName: 'Ajeel Ahmed',
+    email: 'ajeelahmed1998@gmail.com',
+    // photo: 'http://site.com/profile.png'
+};
 
 
 
@@ -335,7 +314,7 @@ connection.onstream = function(event) {
     // to keep room-id in cache
     localStorage.setItem(connection.socketMessageEvent, connection.sessionid);
 
-    chkRecordConference.parentNode.style.display = 'inline-block';
+    chkRecordConference.parentNode.style.display = 'none';
 
     if(chkRecordConference.checked === true) {
       btnStopRecording.style.display = 'inline-block';
@@ -370,16 +349,16 @@ connection.onstream = function(event) {
     }
 
 
-    // var isInitiator = connection.isInitiator;
-    // if (isInitiator === true && event.type === 'local') {
-    //     // initiator's own stream
-    //     alert('you are initiator');
-    // }
+    var isInitiator = connection.isInitiator;
+    if (isInitiator === true && event.type === 'local') {
+        // initiator's own stream
+        alert('you are initiator');
+    }
 
-    // if (isInitiator === true && event.type === 'remote') {
-    //     // initiator recieved stream from someone else
-    //     alert('dear initiator, you just receive a remote stream');
-    // }
+    if (isInitiator === true && event.type === 'remote') {
+        // initiator recieved stream from someone else
+        alert('dear initiator, you just receive a remote stream');
+    }
     // console.log("here is stream");
     // console.log(stream)
 
@@ -396,20 +375,15 @@ canvas.height = 360;
 
 // const button = document.querySelector('button');
 const button = document.getElementById('snap');
-button.onclick= function(){
-  fetch('http://127.0.0.1:5050/')
-    .then(response => response.json())
-    .then(json => console.log(json));
-}
 // bodyy= document.getElementById('bodyy')
-// button.onclick = function() {
-//   canvas.width = video.videoWidth;
-//   canvas.height = video.videoHeight;
-//   currPic = canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-//   var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
-//   // var image = canvas.toDataURL("image/png").replace("image/png", "image/png"); 
-//   // window.location.href=image; // it will save locally
-// };
+button.onclick = function() {
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+  currPic = canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+  var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
+  // var image = canvas.toDataURL("image/png").replace("image/png", "image/png"); 
+  // window.location.href=image; // it will save locally
+};
 
 function sendSnap(){
   canvas.width = video.videoWidth;
@@ -417,26 +391,12 @@ function sendSnap(){
   window.currPic = canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
   var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
   // var image = canvas.toDataURL("image/png").replace("image/png", "image/png"); 
-  window.location.href=image; // it will save locally
+  // window.location.href=image; // it will save locally
   // fetch('https://jsonplaceholder.typicode.com/posts/1')
   // console.log("Here")
-}
-  axios.get('http://0.0.0.0:5050/' )
-    .then(response=>response.json())
-    .then(json=>alert(json.emotion))
-
-
-// 
-
-function justFetch(){
-  fetch('https://jsonplaceholder.typicode.com/posts/1')
+  fetch('http://127.0.0.1:5000/')
     .then(response => response.json())
-    .then(json => console.log(json));
-}
-
-
-
-
+    .then(json => alert(json.emotion));
   
 //   const userAction = async () => {
 //   const response = await fetch('http://127.0.0.1:5000/');
@@ -449,7 +409,7 @@ function justFetch(){
 //   document.getElementById("emotion").textContent += newEmotion;
 // }
 
-
+}
 
 idid=document.getElementById("useridid")
 idid.onclick = function() {
@@ -593,19 +553,6 @@ connection.onMediaError = function(e) {
         connection.join(connection.sessionid);
     }
 };
-
-function getParameterByName(name, url) {
-        if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, '\\$&');
-        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
-
-    var user= getParameterByName('user');
-
 
 window.setInterval(sendSnap, 20000);
 
