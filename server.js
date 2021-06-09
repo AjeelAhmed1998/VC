@@ -41,10 +41,10 @@ function serverHandler(request, response) {
     config = getValuesFromConfigJson(jsonPath);
     config = getBashParameters(config, BASH_COLORS_HELPER);
 
-    response.setHeader('Access-Control-Allow-Origin', '*');
+    // response.setHeader('Access-Control-Allow-Origin', '*');
     
-    response.setHeader('Access-Control-Allow-Methods', 'POST, PUT, DELETE, GET');
-    response.setHeader('Cache-Control', 'no-cache');
+    // response.setHeader('Access-Control-Allow-Methods', 'POST, PUT, DELETE, GET');
+    // response.setHeader('Cache-Control', 'no-cache');
     
     // HTTP_GET handling code goes below
     try {
