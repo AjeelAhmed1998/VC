@@ -4,12 +4,12 @@
   "version": "3.7.0",
   "author": {
     "name": "ajeel ahmed",
-    "email": "ajeel@gmail.com",
+    "email": "ajeel@gmail.com"
     
   },
   "description": "RTCMultiConnection",
   "repository": {
-    "type": "git",
+    "type": "git"
     
   },
   "scripts": {
