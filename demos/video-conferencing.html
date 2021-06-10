@@ -36,49 +36,90 @@
         <a href="https://github.com/muaz-khan/RTCMultiConnection">Github</a>
       </li>
     </nav> -->
-    meeting going on 
+
 
   </header>
 
-  <h1>
-   Meeting in place
-    <!-- <p class="no-mobile">
-      Multi-user (many-to-many) video chat using mesh networking model.
-    </p> -->
-  </h1>
+  <div style="display: flex; background-color: #3aa5ab; margin-bottom: 10px; padding: 10px; justify-content: center;" >
+    <h1 style="color: white; font-weight: 900;">On going meeting</h1>
+  </div>
 
   <section class="make-center">
     <div>
+  <input type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=20>
+
       <label><input type="checkbox" id="record-entire-conference"> Record Entire Conference In The Browser?</label>
       <span id="recording-status" style="display: none;"></span>
       <button id="btn-stop-recording" style="display: none;">Stop Recording</button>
       <br><br>
 
-      <input type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=20>
+      <!-- <input type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=20> -->
 
 
-      <p id="emotion">hello my emotion is </p>
+      <!-- <p id="emotion">hello my emotion is </p> -->
 
 
 
-      <button id="open-room">Open Room</button>
-      <button id="join-room">Join Room</button>
-      <button id="open-or-join-room">Auto Open Or Join Room</button>
 
-      <button id="hangup">hang up</button>
-      <button id="mute"> mute</button>
-      <button id="getAllParticipants">get info of participants</button>
 
-    </div>
+    <!-- <canvas></canvas> -->
 
-    <canvas></canvas>
-
-    <button id="snap">snap</button>
-    <button id="useridid">change username</button>
+    <button id="snap" style="display:none">snap</button>
+    <button id="useridid" style="display:none">change username</button>
 
     <div id="videos-container" style="margin: 20px 0;"></div>
 
+    <button id="open-room" style="display:none">Open Room</button>
+    <button id="join-room" style="display:none">Join Room </button>
+    <button id="open-or-join-room">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone-calling" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+        <line x1="15" y1="7" x2="15" y2="7.01" />
+        <line x1="18" y1="7" x2="18" y2="7.01" />
+        <line x1="21" y1="7" x2="21" y2="7.01" />
+      </svg>
+    </button>
+
+    <!-- <button id="hangup">hang up</button> -->
+    <!-- <button id="mute"> mute</button> -->
+    <button id="hangup">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone-off" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <line x1="3" y1="21" x2="21" y2="3" />
+        <path d="M5.831 14.161a15.946 15.946 0 0 1 -2.831 -8.161a2 2 0 0 1 2 -2h4l2 5l-2.5 1.5c.108 .22 .223 .435 .345 .645m1.751 2.277c.843 .84 1.822 1.544 2.904 2.078l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a15.963 15.963 0 0 1 -10.344 -4.657" />
+      </svg>
+    </button>
+    <button id="mute">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-microphone-off" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <line x1="3" y1="3" x2="21" y2="21" />
+        <path d="M9 5a3 3 0 0 1 6 0v5a3 3 0 0 1 -.13 .874m-2 2a3 3 0 0 1 -3.87 -2.872v-1" />
+        <path d="M5 10a7 7 0 0 0 10.846 5.85m2.002 -2a6.967 6.967 0 0 0 1.152 -3.85" />
+        <line x1="8" y1="21" x2="16" y2="21" />
+        <line x1="12" y1="17" x2="12" y2="21" />
+      </svg>
+    </button>
+
+    <button id="getAllParticipants" style="display:none">get info of participants</button>
+
+  </div>
+
     <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <canvas></canvas>
   </section>
 
 <script src="/dist/RTCMultiConnection.min.js"></script>
@@ -98,7 +139,7 @@ document.getElementById('open-room').onclick = function() {
     disableInputButtons();
     connection.open(document.getElementById('room-id').value, function(isRoomOpened, roomid, error) {
         if(isRoomOpened === true) {
-          showRoomURL(connection.sessionid);
+          // showRoomURL(connection.sessionid);
         }
         else {
           disableInputButtons(true);
@@ -134,7 +175,7 @@ document.getElementById('open-or-join-room').onclick = function() {
         }
         else if (connection.isInitiator === true) {
             // if room doesn't exist, it means that current user will create the room
-            showRoomURL(roomid);
+            // showRoomURL(roomid);
         }
     });
 };
