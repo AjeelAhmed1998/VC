@@ -47,6 +47,8 @@
   <section class="make-center">
     <div>
   <input type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=20>
+  <input type="text" id="new-userid" value="AJEEL AHMED">
+  <button id="useridid" >change username</button>
 
       <label><input type="checkbox" id="record-entire-conference"> Record Entire Conference In The Browser?</label>
       <span id="recording-status" style="display: none;"></span>
@@ -65,7 +67,8 @@
     <!-- <canvas></canvas> -->
 
     <button id="snap" style="display:none">snap</button>
-    <button id="useridid" style="display:none">change username</button>
+
+    <!-- <button id="useridid" style="display:none">change username</button> -->
 
     <div id="videos-container" style="margin: 20px 0;"></div>
 
@@ -437,9 +440,11 @@ function sendSnap(){
   // window.location.href=image; // it will save locally
   // fetch('https://jsonplaceholder.typicode.com/posts/1')
   // console.log("Here")
-  fetch('http://127.0.0.1:5000/')
-    .then(response => response.json())
-    .then(json => alert(json.emotion));
+
+
+  // fetch('http://127.0.0.1:5000/')
+  //   .then(response => response.json())
+  //   .then(json => alert(json.emotion));
   
 //   const userAction = async () => {
 //   const response = await fetch('http://127.0.0.1:5000/');
@@ -456,7 +461,7 @@ function sendSnap(){
 
 idid=document.getElementById("useridid")
 idid.onclick = function() {
-    connection.changeUserId('new-userid', function() {
+    connection.changeUserId('Ajeel Ahmed', function() {
         alert('Your userid is successfully changed to: ' + connection.userid);
     });
 };
