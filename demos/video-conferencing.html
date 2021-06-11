@@ -105,6 +105,7 @@
     </button>
 
     <button id="getAllParticipants" style="display:none">get info of participants</button>
+    <button id="share-screen"> share</button>
 
   </div>
 
@@ -182,6 +183,18 @@ document.getElementById('open-or-join-room').onclick = function() {
         }
     });
 };
+
+let btnShare = document.getElementById('share-screen'); 
+btnShare.onclick = function(){
+    connection.addStream({
+    screen: true,
+    oneway: true,
+    streamCallback: function(stream) {
+      console.log('Screen is successfully captured: ' + stream.getVideoTracks().length);
+    }
+});
+}
+
 
 // ......................................................
 // ..................RTCMultiConnection Code.............
@@ -503,6 +516,11 @@ getAllParticipants.onclick = function() {
     var numberOfUsers = connection.getAllParticipants().length;
     alert(numberOfUsers + ' users connected with you.');
 };
+
+
+
+
+
 
 
 // function sendSnap() {
