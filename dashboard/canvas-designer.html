@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Dashboard + Video Conferencing + Chat + File Sharing | RTCMultiConnection</title>
+  <title>Whiteboard</title>
   <meta name="description" content="WebRTC Dashboard including support for canvas drawing, canvas data syncing, video conferencing, screen sharing and video conferencing. Including chat and file sharing.">
 
   <link rel="shortcut icon" href="/demos/logo.png">
@@ -156,10 +156,10 @@ hr {
 
 <article>
 
-<div id="widget-container" style="position: fixed;bottom: 0;right: 0;left: 20%;height: 100%;border: 1px solid black; border-top:0; border-bottom: 0;"></div>
+<div id="widget-container" style="position: fixed;bottom: 0;right: 0;left: 0;height: 100%;border: 1px solid black; border-top:0; border-bottom: 0;"></div>
 <video id="screen-viewer" controls playsinline autoplay></video>
 
-<div style="width: 20%; height: 100%; position: absolute;left:0;">
+<div style="width: 20%; height: 100%; position: absolute;left:0; display:none;" >
     <video id="main-video" controls playsinline autoplay></video>
     <div id="other-videos"></div>
     <hr>
@@ -635,7 +635,7 @@ designer.appendTo(document.getElementById('widget-container'), function() {
         connection.join(params.sessionid, function(isRoomJoined, roomid, error) {
             if (error) {
                 if (error === connection.errors.ROOM_NOT_AVAILABLE) {
-                    alert('This room does not exist. Please either create it or wait for moderator to enter in the room.');
+                    // alert('This room does not exist. Please either create it or wait for moderator to enter in the room.');
                     return;
                 }
                 if (error === connection.errors.ROOM_FULL) {
