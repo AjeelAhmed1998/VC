@@ -217,9 +217,9 @@ connection.socketMessageEvent = 'video-conference-demo';
 
 
 connection.extra = {
-    fullName: 'Ajeel Ahmed',
-    email: 'ajeelahmed1998@gmail.com',
-    // photo: 'http://site.com/profile.png'
+    // fullName: 'Ajeel Ahmed',
+    // email: 'ajeelahmed1998@gmail.com',
+    // // photo: 'http://site.com/profile.png'
 };
 
 
@@ -438,18 +438,20 @@ connection.onstream = function(event) {
 
       let downloadAtd = document.getElementById("download");
       downloadAtd.onclick = function() {
-        let csvContent = "data:text/csv;charset=utf-8,";
+        // let csvContent = "data:text/csv;charset=utf-8,";
 
-        stuArr.forEach(function(row) {
-        // let row = rowArray.join(",");
-        csvContent += row + "\r\n";
-        });
+        // stuArr.forEach(function(row) {
+        // // let row = rowArray.join(",");
+        // csvContent += row + "\r\n";
+        // });
         
-        var encodedUri = encodeURI(csvContent);
-        window.open(encodedUri);
-        return false;
+        // var encodedUri = encodeURI(csvContent);
+        // window.open(encodedUri);
+        // return false;
 
-        console.log(stuArr);
+        // console.log(stuArr);
+
+        console.log(connection.getAllParticipants());
 
 
 
