@@ -296,4 +296,14 @@ ioServer(httpApp).on('connection', function(socket) {
     socket.on(params.socketCustomEvent, function(message) {
         socket.broadcast.emit(params.socketCustomEvent, message);
     });
+
+    // socket.on("hello",console.log())
+
+    
+    socket.on("hello", function(message) {
+        // console.log(message);
+
+        socket.broadcast.emit("nameOfStudents", message)
+        // socket.broadcast.emit(params.socketCustomEvent, message);
+    });
 });

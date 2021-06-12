@@ -106,6 +106,7 @@
 
     <button id="getAllParticipants" style="display:none">get info of participants</button>
     <button id="share-screen"> share</button>
+    <button id="download">download attendance</button>
 
   </div>
 
@@ -373,6 +374,23 @@ connection.onstream = function(event) {
     // to keep room-id in cache
     localStorage.setItem(connection.socketMessageEvent, connection.sessionid);
 
+
+
+
+    var isInitiator = connection.isInitiator;
+    if (isInitiator === true && event.type === 'local') {
+        // initiator's own stream
+        alert('you are initiator');
+        
+
+    }
+
+    else{
+      connection.socket.emit("hello",connection.userid)
+    }
+
+    
+
     chkRecordConference.parentNode.style.display = 'none';
 
     if(chkRecordConference.checked === true) {
@@ -407,12 +425,37 @@ connection.onstream = function(event) {
       });
     }
 
+    let stuArr = []; 
 
-    var isInitiator = connection.isInitiator;
-    if (isInitiator === true && event.type === 'local') {
-        // initiator's own stream
-        alert('you are initiator');
-    }
+    connection.socket.on("nameOfStudents", function(message) {
+        // if(!connection.getAllParticipants().length) {
+        //   location.reload();
+        // }
+        stuArr.push(message);
+        // console.log(stuArr);
+        // console.log(message);
+      });
+
+      let downloadAtd = document.getElementById("download");
+      downloadAtd.onclick = function() {
+        let csvContent = "data:text/csv;charset=utf-8,";
+
+        stuArr.forEach(function(row) {
+        // let row = rowArray.join(",");
+        csvContent += row + "\r\n";
+        });
+        
+        var encodedUri = encodeURI(csvContent);
+        window.open(encodedUri);
+        return false;
+
+        console.log(stuArr);
+
+
+
+      }
+
+
 
     if (isInitiator === true && event.type === 'remote') {
         // initiator recieved stream from someone else
@@ -453,6 +496,8 @@ function sendSnap(){
   // window.location.href=image; // it will save locally
   // fetch('https://jsonplaceholder.typicode.com/posts/1')
   // console.log("Here")
+
+
 
 
   // fetch('http://127.0.0.1:5000/')
