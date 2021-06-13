@@ -106,7 +106,7 @@
 
     <button id="getAllParticipants" style="display:none">get info of participants</button>
     <button id="share-screen"> share</button>
-    <button id="download">download attendance</button>
+    <button id="download" style="display:none;">download attendance</button>
     <!-- <button id="whiteboard" > whiteboard</button> -->
     <!-- <button class="btn btn-success" id="whiteboard" onclick="location.href="https://teachfinityvc.herokuapp.com/dashboard/canvas-designer.html"> Google</button> -->
     <!-- <button class="btn btn-success" onclick="location.href='https://teachfinityvc.herokuapp.com/dashboard/canvas-designer.html';"> whiteboard</button>
@@ -186,6 +186,9 @@ document.getElementById('open-or-join-room').onclick = function() {
         else if (connection.isInitiator === true) {
             // if room doesn't exist, it means that current user will create the room
             // showRoomURL(roomid);
+
+            document.getElementById("download").style.display = 'inline'; 
+
         }
     });
 };
@@ -443,18 +446,18 @@ connection.onstream = function(event) {
 
       let downloadAtd = document.getElementById("download");
       downloadAtd.onclick = function() {
-        // let csvContent = "data:text/csv;charset=utf-8,";
+        let csvContent = "data:text/csv;charset=utf-8,";
 
-        // stuArr.forEach(function(row) {
-        // // let row = rowArray.join(",");
-        // csvContent += row + "\r\n";
-        // });
+        stuArr.forEach(function(row) {
+        // let row = rowArray.join(",");
+        csvContent += row + "\r\n";
+        });
         
-        // var encodedUri = encodeURI(csvContent);
-        // window.open(encodedUri);
-        // return false;
+        var encodedUri = encodeURI(csvContent);
+        window.open(encodedUri);
+        return false;
 
-        // console.log(stuArr);
+        console.log(stuArr);
 
         console.log(connection.getAllParticipants());
 
@@ -525,8 +528,9 @@ function sendSnap(){
 }
 
 idid=document.getElementById("useridid")
+newUserId = document.getElementById("new-userid")
 idid.onclick = function() {
-    connection.changeUserId('Ajeel Ahmed', function() {
+    connection.changeUserId(newUserId.value, function() {
         alert('Your userid is successfully changed to: ' + connection.userid);
     });
 };
@@ -761,6 +765,8 @@ if (roomid && roomid.length) {
 
     disableInputButtons();
 }
+
+
 
 // detect 2G
 if(navigator.connection &&
