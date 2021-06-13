@@ -47,7 +47,7 @@
   <section class="make-center">
     <div>
   <input type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=20>
-  <input type="text" id="new-userid" value="AJEEL AHMED">
+  <input type="text" id="new-userid" >
   <button id="useridid" >change username</button>
 
       <label><input type="checkbox" id="record-entire-conference"> Record Entire Conference In The Browser?</label>
@@ -379,8 +379,9 @@ connection.onstream = function(event) {
 
     mediaElement.id = event.streamid;
 
-    // to keep room-id in cache
+    
     localStorage.setItem(connection.socketMessageEvent, connection.sessionid);
+    // localStorage.setItem(connection.socketMessageEvent, connection.userid)
 
 
 
